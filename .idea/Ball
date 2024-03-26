@@ -1,32 +1,71 @@
-import java.awt.*;
-import java.util.Random;
+import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 
 public class Ball{
     private int x;
     private int y;
     private int w;
     private int h;
+    private int dx; // Horizontal velocity
+    private int dy; // Vertical velocity
 
     boolean movingLeft = true;
 
     private static final int SCALE = 5;
-
+    
     //default constructing the same ball every time
     public Ball(){
         x = 275;
         y = 100;
         w = 50;
         h = 50;
+        dx = SCALE; // Initial horizontal velocity
+        dy = SCALE; // Initial vertical velocity
     }
 
-    public void move(){
-
+    public void move() {
+        x += dx;
+        y += dy;
     }
-
+    
     //the ball needs to know how to draw itself
     public void draw(Graphics g){
         g.setColor(Color.ORANGE);
         g.fillOval(x, y, w, h);
+    }
+    // Method to handle collision with walls
+    public void checkWallCollision(int screenWidth, int screenHeight) {
+        if (x <= 0 || x + w >= screenWidth) {
+            dx = -dx; // Reverse horizontal velocity
+        }
+        if (y <= 0 || y + h >= screenHeight) {
+            dy = -dy; // Reverse vertical velocity
+        }
+    }
+    // Method to handle collision with paddles
+    public boolean checkPaddleCollision(Paddle paddle) {
+        if (x + w >= paddle.getX() && x <= paddle.getX() + paddle.getWidth() && y + h >= paddle.getY() && y <= paddle.getY() + paddle.getHeight()) {
+            // Collision detected with the paddle
+            dx = -dx; // Reverse horizontal velocity
+            return true;
+        }
+        return false;
+    }
+    // Put in Paddle:
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getWidth() {
+        return w;
+    }
+
+    public int getHeight() {
+        return h;
     }
 }
