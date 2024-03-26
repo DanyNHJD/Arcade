@@ -1,0 +1,21 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class pingPong extends JFrame{
+  private JPanel background = new JPanel();
+
+  public pingPong(){
+    setVisible(true);
+    setTitle("Ping-Pong");
+    setSize(600,300);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+    background.setBackground(Color.BLACK);
+    add(background);
+  }
+
+  public static void main(String[] args){
+
+  }
+}
