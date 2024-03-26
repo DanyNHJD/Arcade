@@ -44,7 +44,7 @@ public class Ball{
         }
     }
     // Method to handle collision with paddles
-    public boolean checkPaddleCollision(Paddle paddle) {
+    public boolean checkPaddleCollision(paddle paddle) {
         if (x + w >= paddle.getX() && x <= paddle.getX() + paddle.getWidth() && y + h >= paddle.getY() && y <= paddle.getY() + paddle.getHeight()) {
             // Collision detected with the paddle
             dx = -dx; // Reverse horizontal velocity
@@ -52,20 +52,5 @@ public class Ball{
         }
         return false;
     }
-    // Put in Paddle:
-    public int getX() {
-        return x;
-    }
 
-    public int getY() {
-        return y;
-    }
-
-    public int getWidth() {
-        return w;
-    }
-
-    public int getHeight() {
-        return h;
-    }
 }

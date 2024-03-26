@@ -1,0 +1,21 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class player extends KeyAdapter{
+    private paddle playerBar;
+
+    public player(paddle p){
+        playerBar = p;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e){
+        int k = e.getKeyCode();
+
+        if(k == KeyEvent.VK_UP){
+            playerBar.moveUp();
+        } else if(k == KeyEvent.VK_DOWN){
+            playerBar.moveDown();
+        }
+    }
+}
