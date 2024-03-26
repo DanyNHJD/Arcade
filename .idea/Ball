@@ -1,0 +1,32 @@
+import java.awt.*;
+import java.util.Random;
+import java.awt.event.*;
+
+public class Ball{
+    private int x;
+    private int y;
+    private int w;
+    private int h;
+
+    boolean movingLeft = true;
+
+    private static final int SCALE = 5;
+
+    //default constructing the same ball every time
+    public Ball(){
+        x = 275;
+        y = 100;
+        w = 50;
+        h = 50;
+    }
+
+    public void move(){
+
+    }
+
+    //the ball needs to know how to draw itself
+    public void draw(Graphics g){
+        g.setColor(Color.ORANGE);
+        g.fillOval(x, y, w, h);
+    }
+}
