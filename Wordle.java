@@ -12,10 +12,8 @@ import java.net.http.HttpResponse;
 
 public class Wordle {
     private static String word;
-    
-    public Wordle() {
-        newWord();
-    }
+    private static char[] letters = new char[5];
+    private static boolean[] guess = new boolean[5];
 
     public static void newWord() {
         // Call for a 5 letter word
@@ -35,13 +33,38 @@ public class Wordle {
             // Save response 
             word = response.body();
             word = word.substring(2, word.length() - 2);
+            letters = word.toCharArray();
         } 
         catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String getWord() {
+    public static void guess(char[] c) {
+        // Check if any of the guessed letters are in the correct spot
+        for (int i = 0; i < 5; i++) {
+
+        }
+
+        // Check if any of the guessed letters are in the random word.
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                
+            }
+        }
+        
+    }
+    
+    public static void resetGame() {
+        newWord();
+
+        for (int i = 0; i < 5; i++) {
+            guess[i] = false;
+        }
+    }
+
+
+    public static String getWord() {
         return word;
     }
 }
