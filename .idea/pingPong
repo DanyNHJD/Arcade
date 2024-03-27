@@ -3,7 +3,8 @@ import java.awt.event.*;
 import java.awt.*;
 
 public class pingPong extends JFrame{
-  private JPanel background = new JPanel();
+  private backPanel table;
+  private int score = 0;
 
   public pingPong(){
     setVisible(true);
@@ -11,11 +12,38 @@ public class pingPong extends JFrame{
     setSize(600,300);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-    background.setBackground(Color.BLACK);
-    add(background);
+    table = new backPanel();
+    add(table);
+
+    Ball b = new Ball();
+    BallIcon ball = new BallIcon(this, b);
+    JLabel ballLabel = new JLabel(ball);
+    table.add(ballLabel);
+
+    player p = new player(10,50);
+    playerIcon play = new playerIcon(this, p);
+    JLabel playerLabel = new JLabel(play);
+    table.add(playerLabel);
+
+    computer c = new computer(b,500,50);
+    computerIcon comp = new computerIcon(this, c);
+    JLabel computerLabel = new JLabel(comp);
+    table.add(computerLabel);
+
+    Timer t = new Timer(100, new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            score++;
+            table.setScore(score);
+            repaint();
+        }
+    });
+
+    t.start();
+    revalidate();
+    repaint();
   }
 
   public static void main(String[] args){
-
+    new pingPong();
   }
 }
