@@ -2,30 +2,33 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class pingPong extends JFrame{
-  private backPanel table;
-  private int score = 0;
+public class pingPong extends JFrame {
+    private backPanel table;
+    private int score = 0;
+    private Ball ball;
+    private final int w = 600;
+    private final int h = 300;
 
-  public pingPong(){
-    setVisible(true);
-    setTitle("Ping-Pong");
-    setSize(600,300);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    public pingPong() {
+        setVisible(true);
+        setTitle("Ping-Pong");
+        setSize(w, h);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-    table = new backPanel();
-    add(table);
+        table = new backPanel();
+        add(table);
 
-    Ball b = new Ball();
-    BallIcon ball = new BallIcon(this, b);
-    JLabel ballLabel = new JLabel(ball);
-    table.add(ballLabel);
+        ball = new Ball(); // Assign the local variable b to the field ball
+        BallIcon ballIcon = new BallIcon(this, ball);
+        JLabel ballLabel = new JLabel(ballIcon);
+        table.add(ballLabel);
 
     player p = new player(10,50);
     playerIcon play = new playerIcon(this, p);
     JLabel playerLabel = new JLabel(play);
     table.add(playerLabel);
 
-    computer c = new computer(b,500,50);
+    computer c = new computer(ball,500,50);
     computerIcon comp = new computerIcon(this, c);
     JLabel computerLabel = new JLabel(comp);
     table.add(computerLabel);
@@ -34,15 +37,18 @@ public class pingPong extends JFrame{
         public void actionPerformed(ActionEvent e){
             score++;
             table.setScore(score);
+            update();
             repaint();
         }
     });
-
     t.start();
     revalidate();
     repaint();
   }
-
+  private void update() {
+        ball.move(); 
+        ball.checkWallCollision(w, h);
+    }
   public static void main(String[] args){
     new pingPong();
   }
