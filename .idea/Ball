@@ -10,13 +10,14 @@ public class Ball{
     private int h;
     private int dx; // Horizontal velocity
     private int dy; // Vertical velocity
+    private JFrame frame;
 
     boolean movingLeft = true;
 
     private static final int SCALE = 5;
     
     //default constructing the same ball every time
-    public Ball(){
+    public Ball(JFrame frame){
         x = 275;
         y = 100;
         w = 50;
@@ -40,8 +41,11 @@ public class Ball{
         if (x <= 0 || x + w >= screenWidth) {
             dx = -dx; // Reverse horizontal velocity
         }
-        if (y <= 0 || y + h >= screenHeight) {
+        int titleBarHeight = frame.getInsets().top;
+        int panelHeight = screenHeight - titleBarHeight;
+        if (y <= 0 || y + h >= panelHeight) {
             dy = -dy; // Reverse vertical velocity
+            y = Math.min(y, panelHeight - h);
         }
     }
     // Method to handle collision with paddles
