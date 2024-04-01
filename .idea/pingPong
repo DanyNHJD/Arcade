@@ -18,7 +18,7 @@ public class pingPong extends JFrame {
         table = new backPanel();
         add(table);
 
-        ball = new Ball(); // Assign the local variable b to the field ball
+        ball = new Ball(this); // Assign the local variable b to the field ball
         BallIcon ballIcon = new BallIcon(this, ball);
         JLabel ballLabel = new JLabel(ballIcon);
         table.add(ballLabel);
