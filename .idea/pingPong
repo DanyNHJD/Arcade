@@ -3,7 +3,6 @@ import java.awt.event.*;
 import java.awt.*;
 
 public class pingPong extends JFrame {
-    private backPanel table;
     private int score = 0;
     private Ball ball;
     private final int w = 600;
@@ -14,36 +13,34 @@ public class pingPong extends JFrame {
         setTitle("Ping-Pong");
         setSize(w, h);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        getContentPane().setBackground(Color.BLACK);
+        setLayout(new GridLayout(1,3));
 
-        table = new backPanel();
-        add(table);
+        player p = new player(10,50);
+        playerIcon play = new playerIcon(this, p);
+        JLabel playerLabel = new JLabel(play);
+        add(playerLabel);
 
         ball = new Ball(this); // Assign the local variable b to the field ball
         BallIcon ballIcon = new BallIcon(this, ball);
         JLabel ballLabel = new JLabel(ballIcon);
-        table.add(ballLabel);
+        add(ballLabel);
 
-    player p = new player(10,50);
-    playerIcon play = new playerIcon(this, p);
-    JLabel playerLabel = new JLabel(play);
-    table.add(playerLabel);
+        computer c = new computer(ball,165,50);
+        computerIcon comp = new computerIcon(this, c);
+        JLabel computerLabel = new JLabel(comp);
+        add(computerLabel);
 
-    computer c = new computer(ball,500,50);
-    computerIcon comp = new computerIcon(this, c);
-    JLabel computerLabel = new JLabel(comp);
-    table.add(computerLabel);
-
-    Timer t = new Timer(100, new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            score++;
-            table.setScore(score);
-            update();
-            repaint();
-        }
-    });
-    t.start();
-    revalidate();
-    repaint();
+        Timer t = new Timer(100, new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                score++;
+                update();
+                repaint();
+            }
+        });
+        t.start();
+        revalidate();
+        repaint();
   }
   private void update() {
         ball.move(); 

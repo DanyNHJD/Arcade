@@ -18,19 +18,20 @@ public class Ball{
     
     //default constructing the same ball every time
     public Ball(JFrame frame){
-        x = 275;
+        x = 100;
         y = 100;
         w = 50;
         h = 50;
         dx = SCALE; // Initial horizontal velocity
         dy = SCALE; // Initial vertical velocity
+        this.frame = frame;
     }
 
     public void move() {
         x += dx;
         y += dy;
     }
-    
+
     //the ball needs to know how to draw itself
     public void draw(Graphics g){
         g.setColor(Color.ORANGE);
@@ -38,7 +39,7 @@ public class Ball{
     }
     // Method to handle collision with walls
     public void checkWallCollision(int screenWidth, int screenHeight) {
-        if (x <= 0 || x + w >= screenWidth) {
+        if (x <= -200 || x + w >= screenWidth - 200) {
             dx = -dx; // Reverse horizontal velocity
         }
         int titleBarHeight = frame.getInsets().top;
