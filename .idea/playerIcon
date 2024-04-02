@@ -30,7 +30,6 @@ public class playerIcon implements Icon{
 
     public void paintIcon(Component c, Graphics g, int x, int y){
         play.draw(g);
-        System.out.println("I exist");
 
         //have the window refresh its appearence
         win.repaint();

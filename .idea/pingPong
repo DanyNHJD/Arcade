@@ -3,33 +3,46 @@ import java.awt.event.*;
 import java.awt.*;
 
 public class pingPong extends JFrame {
+    public JPanel left, mid, right;
     private int score = 0;
     private Ball ball;
     private final int w = 600;
     private final int h = 300;
 
     public pingPong() {
+        left = new backPanel();
+        mid = new backPanel();
+        right = new backPanel();
         setVisible(true);
         setTitle("Ping-Pong");
         setSize(w, h);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().setBackground(Color.BLACK);
-        setLayout(new GridLayout(1,3));
+        //getContentPane().setBackground(Color.BLACK);
+        setLayout(null);
+        //setBounds(0,0,600,300);
+
+        left.setBounds(0,0,30,300);
+        mid.setBounds(30,0,530,300);
+        right.setBounds(560,0,40,300);
+
+        add(left);
+        add(mid);
+        add(right);
 
         player p = new player(10,50);
         playerIcon play = new playerIcon(this, p);
         JLabel playerLabel = new JLabel(play);
-        add(playerLabel);
+        left.add(playerLabel);
 
         ball = new Ball(this); // Assign the local variable b to the field ball
         BallIcon ballIcon = new BallIcon(this, ball);
         JLabel ballLabel = new JLabel(ballIcon);
-        add(ballLabel);
+        mid.add(ballLabel);
 
-        computer c = new computer(ball,165,50);
+        computer c = new computer(ball,0,50);
         computerIcon comp = new computerIcon(this, c);
         JLabel computerLabel = new JLabel(comp);
-        add(computerLabel);
+        right.add(computerLabel);
 
         Timer t = new Timer(100, new ActionListener(){
             public void actionPerformed(ActionEvent e){
