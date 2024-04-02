@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*; 
 public class pingPong extends JFrame {
-    private backPanel left, mid, right;
+    private JPanel left, mid, right;
     private int score = 0;
     private Ball ball;
     private final int w = 600;
@@ -17,16 +17,19 @@ public class pingPong extends JFrame {
         setTitle("Ping-Pong");
         setSize(w, h);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().setBackground(Color.BLACK);
         setLayout(null);
 
         left.setBounds(0,0,30,300);
         mid.setBounds(30,0,530,300);
         right.setBounds(560,0,40,300);
-        
+
         left.setLayout(null);
         mid.setLayout(null);
         right.setLayout(null);
+
+        left.setBackground(Color.BLACK);
+        mid.setBackground(Color.BLACK);
+        right.setBackground(Color.BLACK);
 
         add(left);
         add(mid);
