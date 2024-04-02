@@ -39,7 +39,7 @@ public class Ball{
     }
     // Method to handle collision with walls
     public void checkWallCollision(int screenWidth, int screenHeight) {
-        if (x <= 0 || x + w >= screenWidth) {
+        if (x <= 30 || x + w >= screenWidth-30) {
             dx = -dx; // Reverse horizontal velocity
         }
         int titleBarHeight = frame.getInsets().top;

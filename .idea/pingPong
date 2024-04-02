@@ -2,11 +2,12 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*; 
 public class pingPong extends JFrame {
-    public JPanel left, mid, right;
+    private backPanel left, mid, right;
     private int score = 0;
     private Ball ball;
     private final int w = 600;
     private final int h = 300;
+    private computer c;
 
     public pingPong() {
         left = new JPanel();
@@ -43,11 +44,13 @@ public class pingPong extends JFrame {
         ballLabel.setBounds(0, 0, w - 200, h); // Set bounds for ball label
         mid.add(ballLabel);
 
-        computer c = new computer(ball,0,50);
+        c = new computer(ball,0,50);
         computerIcon comp = new computerIcon(this, c);
         JLabel computerLabel = new JLabel(comp);
         computerLabel.setBounds(0, 0, 100, h); // Set bounds for computer label
         right.add(computerLabel);
+
+        addKeyListener(p);
 
         Timer t = new Timer(100, new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -62,8 +65,9 @@ public class pingPong extends JFrame {
     }
 
     private void update() {
-        ball.move(); 
+        ball.move();
         ball.checkWallCollision(w, h);
+        c.computerMove();
     }
 
     public static void main(String[] args) {
