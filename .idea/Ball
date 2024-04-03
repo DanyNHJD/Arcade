@@ -2,8 +2,10 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.Random;
 
 public class Ball{
+    private Random rn = new Random();
     private int x;
     private int y;
     private int w;
@@ -42,13 +44,14 @@ public class Ball{
     // Method to handle collision with walls
     public void checkWallCollision(int screenWidth, int screenHeight) {
         if (x <= 0 || x + w >= screenWidth-70) {
-            dx = -dx; // Reverse horizontal velocity
+            dx = -dx;// Reverse horizontal velocity
         }
         int titleBarHeight = frame.getInsets().top;
         int panelHeight = screenHeight - titleBarHeight;
         if (y <= 0 || y + h >= panelHeight) {
             dy = -dy; // Reverse vertical velocity
             y = Math.min(y, panelHeight - h);
+            dy += addVarience();
         }
     }
     // Method to handle collision with paddles
@@ -82,5 +85,10 @@ public class Ball{
 
     public void setSpeed(int s){
         SCALE = s;
+    }
+
+    //this will be used to add the changes in the balls angle
+    public int addVarience(){
+        return (rn.nextInt(1001) - 500) / 100;
     }
 }
