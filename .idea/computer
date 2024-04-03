@@ -18,7 +18,11 @@ public class computer{
 
     public void computerMove(){
         if(y != ball.getY()){
-            y = ball.getY();
+            if(ball.getY() < 190){
+                y = ball.getY();
+            } else{
+                y = 190;
+            }
         }
     }
 

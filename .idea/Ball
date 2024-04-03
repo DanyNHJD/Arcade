@@ -11,13 +11,14 @@ public class Ball{
     private int dx; // Horizontal velocity
     private int dy; // Vertical velocity
     private JFrame frame;
+    private player paddle;
 
     boolean movingLeft = true;
 
-    private static final int SCALE = 5;
-    
+    private static int SCALE = 5;
+
     //default constructing the same ball every time
-    public Ball(JFrame frame){
+    public Ball(JFrame frame, player p){
         x = 100;
         y = 100;
         w = 50;
@@ -25,6 +26,7 @@ public class Ball{
         dx = SCALE; // Initial horizontal velocity
         dy = SCALE; // Initial vertical velocity
         this.frame = frame;
+        paddle = p;
     }
 
     public void move() {
@@ -39,7 +41,7 @@ public class Ball{
     }
     // Method to handle collision with walls
     public void checkWallCollision(int screenWidth, int screenHeight) {
-        if (x <= 30 || x + w >= screenWidth-30) {
+        if (x <= 0 || x + w >= screenWidth-70) {
             dx = -dx; // Reverse horizontal velocity
         }
         int titleBarHeight = frame.getInsets().top;
@@ -50,8 +52,9 @@ public class Ball{
         }
     }
     // Method to handle collision with paddles
-    public boolean checkPaddleCollision(player pPaddle, computer cPaddle) {
-        if (x + w >= pPaddle.getX() && x <= pPaddle.getX() + pPaddle.getWidth() && y + h >= pPaddle.getY() && y <= pPaddle.getY() + pPaddle.getHeight()) {
+    public boolean checkPaddleCollision(player pPaddle) {
+        //kept just in case but currently unnessesary - Justin 4/3/24
+        /*if (x + w >= pPaddle.getX() && x <= pPaddle.getX() + pPaddle.getWidth() && y + h >= pPaddle.getY() && y <= pPaddle.getY() + pPaddle.getHeight()) {
             // Collision detected with the paddle
             dx = -dx; // Reverse horizontal velocity
             return true;
@@ -60,8 +63,13 @@ public class Ball{
             // Collision detected with the paddle
             dx = -dx; // Reverse horizontal velocity
             return true;
+        }*/
+
+        if((x <= 0) && (y < pPaddle.getY() - 25 || y > pPaddle.getY() + 90)){
+             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     public int getX(){
@@ -70,5 +78,9 @@ public class Ball{
 
     public int getY(){
         return y;
+    }
+
+    public void setSpeed(int s){
+        SCALE = s;
     }
 }

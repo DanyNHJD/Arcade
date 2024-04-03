@@ -4,10 +4,14 @@ import java.awt.*;
 public class pingPong extends JFrame {
     private JPanel left, mid, right;
     private int score = 0;
+    private int speedUpTimer = 0;
+    private int speed = 5;
     private Ball ball;
     private final int w = 600;
     private final int h = 300;
     private computer c;
+    private player p;
+    private boolean loss = false;
 
     public pingPong() {
         left = new JPanel();
@@ -35,16 +39,16 @@ public class pingPong extends JFrame {
         add(mid);
         add(right);
 
-        player p = new player(10,50);
+        p = new player(10,50);
         playerIcon play = new playerIcon(this, p);
         JLabel playerLabel = new JLabel(play);
         playerLabel.setBounds(0, 0, 100, h); // Set bounds for player label
         left.add(playerLabel);
 
-        ball = new Ball(this); // Assign the local variable b to the field ball
+        ball = new Ball(this, p); // Assign the local variable b to the field ball
         BallIcon ballIcon = new BallIcon(this, ball);
         JLabel ballLabel = new JLabel(ballIcon);
-        ballLabel.setBounds(0, 0, w - 200, h); // Set bounds for ball label
+        ballLabel.setBounds(0, 0, w, h); // Set bounds for ball label
         mid.add(ballLabel);
 
         c = new computer(ball,0,50);
@@ -57,19 +61,28 @@ public class pingPong extends JFrame {
 
         Timer t = new Timer(100, new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                score++;
-                update();
-                repaint();
+                if(!loss){
+                    score++;
+                    update();
+                    repaint();
+                    if(speedUpTimer % 10 == 0){
+                        speedUpTimer = 0;
+                        speed += 0.1;
+                        ball.setSpeed(speed);
+                    }
+                } else {
+                    setTitle("You Lose You Score Was: " + score);
+                }
             }
         });
         t.start();
         revalidate();
-        repaint();
     }
 
     private void update() {
         ball.move();
         ball.checkWallCollision(w, h);
+        loss = ball.checkPaddleCollision(p);
         c.computerMove();
     }
 
