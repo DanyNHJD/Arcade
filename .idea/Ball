@@ -28,6 +28,9 @@ public class Ball{
         // Set initial velocities to random values between -SCALE and SCALE
         dx = SCALE;
         dy = rn.nextInt(2 * SCALE + 1) - SCALE;
+        if(dy == 0){
+            dy = 1;
+        }
         this.frame = frame;
         paddle = p;
     }
@@ -95,6 +98,6 @@ public class Ball{
 
     //this will be used to add the changes in the balls angle
     public int addVarience(){
-        return (rn.nextInt(1001) - 500) / 100;
+        return (rn.nextInt(601) - 300) / 100;
     }
 }
