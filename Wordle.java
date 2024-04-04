@@ -9,7 +9,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-// Test
+
 public class Wordle {
     private static String word = "debug"; // Random word
     private static char[] letters = new char[5]; // Random word in char[]
