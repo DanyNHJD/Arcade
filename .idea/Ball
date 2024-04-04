@@ -25,8 +25,9 @@ public class Ball{
         y = 100;
         w = 50;
         h = 50;
-        dx = SCALE; // Initial horizontal velocity
-        dy = SCALE; // Initial vertical velocity
+        // Set initial velocities to random values between -SCALE and SCALE
+        dx = rn.nextInt(2 * SCALE + 1) - SCALE;
+        dy = rn.nextInt(2 * SCALE + 1) - SCALE;
         this.frame = frame;
         paddle = p;
     }
