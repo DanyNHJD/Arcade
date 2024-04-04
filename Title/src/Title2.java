@@ -17,8 +17,8 @@ public class Title2 extends JFrame implements ActionListener {
 
        //pong
         button = new JButton();
-        ImageIcon icon = new ImageIcon("Pong26.png");
-        ImageIcon icon1 = new ImageIcon("Wordle.png");
+        ImageIcon icon = new ImageIcon("Title/Pong26.png");
+        ImageIcon icon1 = new ImageIcon("Title/Wordle.png");
 
         button.setBounds(300,350,200,100);
         button.addActionListener(this);
