@@ -33,7 +33,7 @@ public class WordleGame implements ActionListener{
             JOptionPane.showMessageDialog(null, "Your guess can only be 5 letters!", "Wordle",
             JOptionPane.INFORMATION_MESSAGE);
             
-            tf.setText("");  
+            tf.setText(""); 
         }
         String s1 = tf.getText().toUpperCase();
 
