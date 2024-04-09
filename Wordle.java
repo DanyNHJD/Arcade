@@ -11,7 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Wordle {
-    private static String word = "debug"; // Random word
+    private static String word; // Random word
     private static char[] letters = new char[5]; // Random word in char[]
     private static char[] userGuess = new char[5]; // User guessed word
     private static boolean[] guessTracker = new boolean[5]; // Keep track of letters used
