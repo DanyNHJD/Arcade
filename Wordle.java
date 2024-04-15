@@ -13,8 +13,8 @@ import java.net.http.HttpResponse;
 public class Wordle {
     private static String word; // Random word
     private static char[] letters = new char[5]; // Random word in char[]
-    private static char[] userGuess = new char[5]; // User guessed word
     private static boolean[] guessTracker = new boolean[5]; // Keep track of letters used
+    private static boolean[] validLetter = new boolean[5];
 
     public static void newWord() {
         // Call for a 5 letter word
@@ -44,14 +44,18 @@ public class Wordle {
     public static void guess(char[] c) {
         // Check if any of the guessed letters are in the correct spot
         for (int i = 0; i < 5; i++) {
-            if (userGuess[i] == letters[i]) {
-
+            if (c[i] == letters[i]) {
+                guessTracker[i] = true;
             }
         }
 
         // Check if any of the guessed letters are in the random word.
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
+                // Make sure the correct letter spot doesnt get marked again.
+                if (guessTracker[i] == true) {
+                    validLetter[i] = true;
+                }
                 
             }
         }
@@ -60,14 +64,22 @@ public class Wordle {
     
     public static void resetGame() {
         newWord();
-
         for (int i = 0; i < 5; i++) {
             guessTracker[i] = false;
+            validLetter[i] = false;
         }
     }
 
-
+    // Return values to program
     public static String getWord() {
         return word;
+    }
+
+    public static boolean[] getGuesses() {
+        return guessTracker;
+    }
+
+    public static boolean[] getValidLetters() {
+        return validLetter;
     }
 }
