@@ -1,47 +1,54 @@
 import javax.swing.*;
-
-import java.awt.Button;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.*;
 
 
 
 public class WordleGame implements ActionListener{
     private char[] charGuess = new char[5];
+    public int allowedGuesses = 5;
+
+    JFrame win = new JFrame("Wordle");
+    JPanel P1, P2;
     JTextField tf = new JTextField();
-    JButton b = new JButton("Guess");
-    JFrame f = new JFrame("Wordle");
-    JPanel p = new JPanel();
+    Button [] button = new Button[allowedGuesses * 5];
+
 
     public WordleGame() { 
+        P1 = new JPanel();
         tf.requestFocus();
-        tf.setBounds(50,400,310,50);
-        b.setBounds(350,400,100,49);
+        tf.addActionListener(this);
+        tf.setPreferredSize(new Dimension(300, 20));
+        P1.add(tf);
 
         createGrid();
- 
-        b.addActionListener(this);
-        tf.addActionListener(this);
-
-        f.add(tf);
-        f.add(b);
-        f.setSize(500,500);
-        f.setLayout(null);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        win.add(P1,BorderLayout.PAGE_END);
+        win.setSize(500,500);
+        win.setVisible(true);
+        win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        win.setResizable(false);
     }
 
     public void createGrid() {
+        P2 = new JPanel();
+        P2.setLayout (new GridLayout(5, allowedGuesses));
+        for(int i = 0; i < allowedGuesses * 5; ++i){
+            button[i] = new Button();
+            button[i].setEnabled(false);      
+        }
+
+        for(int i = 0; i < allowedGuesses * 5; ++i) {
+            P2.add(button[i]);
+        }
         
-        p.setVisible(true);
-        p.setLayout(new FlowLayout());
-        f.add(p);
-        
+
+        win.add(P2);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if ((tf.getText().length() > 5)) {
+        if ((tf.getText().length() > 5) || (tf.getText().length() < 5)) {
             JOptionPane.showMessageDialog(null, "Your guess can only be 5 letters!", "Wordle",
             JOptionPane.INFORMATION_MESSAGE);
             tf.setText("");
@@ -58,7 +65,7 @@ public class WordleGame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        //Wordle.resetGame();
+        Wordle.resetGame();
         new WordleGame();
     }
 }
