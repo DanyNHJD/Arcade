@@ -9,7 +9,7 @@ public class JeoperdyClass<JSONObject> {
 
     public static void main(String[] args) {
 
-        Jeopardy frame = new Jeopardy();
+        JeopardyLayout frame = new JeopardyLayout();
          try {
                     URL url = new URL("https://opentdb.com/api.php?amount=10");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();

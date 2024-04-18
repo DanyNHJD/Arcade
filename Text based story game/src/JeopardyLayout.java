@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Jeopardy extends JFrame implements ActionListener {
+public class JeopardyLayout extends JFrame implements ActionListener {
 
 
 
@@ -14,7 +14,7 @@ public class Jeopardy extends JFrame implements ActionListener {
     private String[] Money = {"$100", "$200", "$300", "$400", "$500",};
 
 
-    Jeopardy() {
+    JeopardyLayout() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setSize(800, 600);
@@ -42,17 +42,18 @@ public class Jeopardy extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < categories.length; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (e.getSource() == buttons[j][i]) {
-                    System.out.println(categories[i] + " button at row " + (j + 1) + " clicked.");
+        for (int i = 0; i < Money.length; i++) {
+            for (int j = 0; j < categories.length; j++) {
+                if (e.getSource() == buttons[i][j]) {
+                    System.out.println(categories[j] + " button at row " + Money[i] + " clicked.");
+                    JeopardyQuestions jeopardyQuestions = new JeopardyQuestions(categories[j],Money[i]);
                     return;
                 }
             }
         }
     }
 
-    public static void main(String[] args) {
-        new Jeopardy();
-    }
+
+
+
 }
