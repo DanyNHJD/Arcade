@@ -95,7 +95,7 @@ public class pingPong extends JFrame {
                     }
                     setTitle("Ping-Pong\t\t\t\t\t\t score: " + score);
                 } else {
-                    setTitle("You Lose \t\t\t\t\t Your Score Was: " + score);
+                    setTitle("Game Over \t\t\t\t\t Your Score Was: " + score);
                 }
             }
         });
