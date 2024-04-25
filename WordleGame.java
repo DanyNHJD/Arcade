@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-
-
 public class WordleGame implements ActionListener{
     private static boolean debug = true;
 
@@ -18,7 +16,7 @@ public class WordleGame implements ActionListener{
     JTextField tf = new JTextField();
     static Button [] button = new Button[allowedGuesses * 5];
 
-
+    // Start WordleGame
     public WordleGame() { 
         P1 = new JPanel();
         tf.requestFocus();
@@ -35,6 +33,7 @@ public class WordleGame implements ActionListener{
         win.setResizable(false);
     }
 
+    // Makes the grid for the game.
     public void createGrid() {
         P2 = new JPanel();
         P2.setLayout (new GridLayout(5, allowedGuesses));
@@ -51,10 +50,12 @@ public class WordleGame implements ActionListener{
         win.add(P2);
     }
 
+    // When user hits enter.
     @Override
     public void actionPerformed(ActionEvent e) {
         if ((tf.getText().length() > 5) || (tf.getText().length() < 5)) {
-            JOptionPane.showMessageDialog(null, "Your guess can only be 5 letters!", "Wordle",
+            JOptionPane.showMessageDialog(null, 
+            "Your guess can only be 5 letters!", "Wordle",
             JOptionPane.INFORMATION_MESSAGE);
             tf.setText("");
         }
@@ -74,6 +75,7 @@ public class WordleGame implements ActionListener{
         tf.setText("");
     }
 
+    // Changes the boxes to green or yellow depending on what the user guessed.
     public static void guessBoxes() {
         boolean[] guessTracker = Wordle.getGuesses();
         boolean[] validLetter = Wordle.getValidLetters();
@@ -96,6 +98,10 @@ public class WordleGame implements ActionListener{
 
     public static boolean debugStatus() {
         return debug;
+    }
+
+    public static int userGuessAmount() {
+        return guessPlacement;
     }
 
     public static void guessRestart() {

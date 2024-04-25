@@ -43,7 +43,9 @@ public class Wordle {
         }
     }
 
+    // Format the buttons to go green or yellow
     public static void guess(char[] c) {
+
         // Check if any of the guessed letters are in the correct spot
         for (int i = 0; i < 5; i++) {
             if (c[i] == letters[i]) {
@@ -56,7 +58,7 @@ public class Wordle {
             for (int j = 0; j < 5; j++) {
                 // Make sure the correct letter spot doesnt get marked again.
                 if (guessTracker[i] != true) {
-                    if (c[i] == letters[i]) {
+                    if (c[i] == letters[j]) {
                         validLetter[i] = true;
                     }
                 }
@@ -66,30 +68,45 @@ public class Wordle {
         
         
     }
-
+    // Check if player has won
     public static void checkWin() {
+        // Check if player already guessed multiple times
+        if (WordleGame.userGuessAmount() > 24) {
+            int reply = JOptionPane.showConfirmDialog(null, 
+            "Too bad! The word was: " + Wordle.getWord() +"\nWould you like to play again?",
+             ":(!", JOptionPane.YES_NO_OPTION);
+        
+            if (reply == JOptionPane.YES_OPTION) {
+                Wordle.resetGame(); // Reset game.
+            } 
+            else {
+                System.exit(0); // Close game.
+            }
+            
+        }
+        
         boolean win = true;
         for (int i = 0; i < 5; i++) {
             if (guessTracker[i] != true) {
                 win = false;
             } 
         }
-
+        // If they win, ask if they would like to play again.
         if (win == true) {
-            int reply = JOptionPane.showConfirmDialog(null, "Congrats on guessing the word: " + word +"\nWould you like to play again?", "Congratulations!", JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(null, 
+            "Congrats on guessing the word: " + word +"\nWould you like to play again?",
+             "Congratulations!", JOptionPane.YES_NO_OPTION);
         
             if (reply == JOptionPane.YES_OPTION) {
                 resetGame(); // Reset game.
             } 
             else {
                 System.exit(0); // Close game.
+            }
         }
-        }
-
-
     }
 
-    
+    // Reset game
     public static void resetGame() {
         newWord();
         for (int i = 0; i < 5; i++) {
