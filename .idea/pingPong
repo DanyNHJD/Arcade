@@ -6,7 +6,7 @@ public class pingPong extends JFrame {
     private JPanel left, mid, right;
     private int score = 0;
     private int speedUpTimer = 1;
-    private int speed = 5;
+    private int speed = 7;
     private Ball ball;
     private final int w = 600;
     private final int h = 300;
@@ -83,22 +83,30 @@ public class pingPong extends JFrame {
 
         Timer t = new Timer(100, new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                if(!loss){
-                    update();
-                    repaint();
-                    speedUpTimer++;
-                    if(speedUpTimer % 10 == 0){
-                        speedUpTimer = 1;
-                        speed += 0.1;
-                        ball.setSpeed(speed);
-                        score++;
-                    }
-                    setTitle("Ping-Pong\t\t\t\t\t\t score: " + score);
-                } else {
-                    setTitle("Game Over \t\t\t\t\t Your Score Was: " + score);
+            if (!loss) {
+            update();
+            repaint();
+            speedUpTimer++;
+                if (speedUpTimer % 10 == 0) {
+                speedUpTimer = 1;
+                speed += 0.1;
+                ball.setSpeed(speed);
+                score++;
+            }
+            setTitle("Ping-Pong\t\t\t\t\t\t score: " + score);
+            } else {
+                if (isOnePlayerModeActive) {
+                setTitle("Game Over \t\t\t\t\t Your Score Was: " + score);
+            }   else {
+                    if (p.getY() > p2.getY()) {
+                    setTitle("Player Two Loses \t\t\t\t\t The Score Was: " + score);
+                }   else {
+                    setTitle("Player One Loses \t\t\t\t\t The Score Was: " + score);
                 }
             }
-        });
+            }
+        }
+    });
         t.start();
         revalidate();
     }
