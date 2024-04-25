@@ -104,6 +104,11 @@ public class Wordle {
                 System.exit(0); // Close game.
             }
         }
+        for (int i = 0; i < 5; i++) {
+            guessTracker[i] = false;
+            validLetter[i] = false;
+            
+        }
     }
 
     // Reset game
