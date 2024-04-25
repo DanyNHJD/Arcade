@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class WordleGame implements ActionListener{
-    private static boolean debug = true;
+    private static boolean debug = false;
 
     private static int guessPlacement = 0;
     private static char[] charGuess = new char[5];
@@ -40,7 +40,8 @@ public class WordleGame implements ActionListener{
         for(int i = 0; i < allowedGuesses * 5; ++i){
             button[i] = new Button();
             button[i].setEnabled(false);
-            button[i].setBackground(Color.WHITE);    
+            button[i].setBackground(Color.WHITE);
+            button[i].setFont(new Font("Arial", Font.BOLD, 40));
         }
 
         for(int i = 0; i < allowedGuesses * 5; ++i) {
