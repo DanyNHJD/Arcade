@@ -3,14 +3,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Title2 extends JFrame implements ActionListener {
+public class Start extends JFrame implements ActionListener {
 
     JButton button1;
     JButton button;
 
 
 
-    Title2(){
+    Start(){
 
        //pong
         button = new JButton();
@@ -56,5 +56,9 @@ public class Title2 extends JFrame implements ActionListener {
         if(e.getSource() == button1){
             wordle frame = new Wordle.resetgame();
         }
+    }
+
+    public static void main(String[] args) {
+        new Start();
     }
 }

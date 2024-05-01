@@ -1,3 +1,4 @@
+package Checkers;
 //Justin Stevens
 
 import java.awt.event.*;
