@@ -13,7 +13,7 @@ import java.net.http.HttpResponse;
 import javax.swing.JOptionPane;
 
 public class Wordle {
-    private static String word; // Random word, defaults at debug for debugging purposes
+    private static String word = "reefs"; // Random word, defaults at debug for debugging purposes
     private static char[] letters = new char[5]; // Random word in char[]
     private static boolean[] guessTracker = new boolean[5]; // Keep track of letters used
     private static boolean[] validLetter = new boolean[5];
@@ -74,7 +74,7 @@ public class Wordle {
         if (WordleGame.userGuessAmount() > 24) {
             int reply = JOptionPane.showConfirmDialog(null, 
             "Too bad! The word was: " + Wordle.getWord() +"\nWould you like to play again?",
-             ":(!", JOptionPane.YES_NO_OPTION);
+             ":(", JOptionPane.YES_NO_OPTION);
         
             if (reply == JOptionPane.YES_OPTION) {
                 Wordle.resetGame(); // Reset game.
