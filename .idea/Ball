@@ -64,24 +64,20 @@ public class Ball{
         }
     }
     // Method to handle collision with paddles
-    public boolean checkPaddleCollision(player pPaddle) {
-        //kept just in case but currently unnessesary - Justin 4/3/24
-        /*if (x + w >= pPaddle.getX() && x <= pPaddle.getX() + pPaddle.getWidth() && y + h >= pPaddle.getY() && y <= pPaddle.getY() + pPaddle.getHeight()) {
-            // Collision detected with the paddle
-            dx = -dx; // Reverse horizontal velocity
-            return true;
+    public boolean checkPaddleCollision(player pPaddle, player p2Paddle, computer cPaddle, int width) {   
+        // Check collision with the first player's paddle
+        if (x <= 0 && (y <= pPaddle.getY() || y >= pPaddle.getY() + pPaddle.getHeight())) {
+        dx = SCALE; // Reverse horizontal velocity
+        dy += addVarience(); // Adjust vertical velocity
+        return true;
         }
-        if (x + w >= cPaddle.getX() && x <= cPaddle.getX() + cPaddle.getWidth() && y + h >= cPaddle.getY() && y <= cPaddle.getY() + cPaddle.getHeight()) {
-            // Collision detected with the paddle
-            dx = -dx; // Reverse horizontal velocity
-            return true;
-        }*/
-
-        if((x <= 0) && (y < pPaddle.getY() - 25 || y > pPaddle.getY() + 90)){
-             return true;
-        } else {
-            return false;
+        // Check collision with the second player's paddle if it exists (two-player mode)
+        if (p2Paddle != null && x >= width - w && (y <= p2Paddle.getY() || y >= p2Paddle.getY() + p2Paddle.getHeight())) {
+        dx = -SCALE; // Reverse horizontal velocity
+        dy += addVarience(); // Adjust vertical velocity
+        return true;
         }
+        return false;
     }
 
     public int getX(){

@@ -17,11 +17,11 @@ public class player extends KeyAdapter{
     public void keyPressed(KeyEvent e){
         int k = e.getKeyCode();
         
-        if(k == KeyEvent.VK_UP){
+        if(k == KeyEvent.VK_W){
             if(y > 0){
                 y -= dy;
             }
-        } else if(k == KeyEvent.VK_DOWN){
+        } else if(k == KeyEvent.VK_S){
             if(y < 190){
                 y += dy;
             }

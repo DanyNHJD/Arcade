@@ -10,15 +10,17 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import javax.swing.JOptionPane;
+
 public class Wordle {
-    private static String word; // Random word
+    private static String word; // Random word, defaults at debug for debugging purposes
     private static char[] letters = new char[5]; // Random word in char[]
     private static boolean[] guessTracker = new boolean[5]; // Keep track of letters used
     private static boolean[] validLetter = new boolean[5];
 
     public static void newWord() {
         // Call for a 5 letter word
-        System.out.println("Calling for a random word... Please wait.");
+        System.out.println("\nCalling for a random word... Please wait.");
         try {
             HttpRequest request = HttpRequest.newBuilder()
             .GET()
@@ -41,7 +43,9 @@ public class Wordle {
         }
     }
 
+    // Format the buttons to go green or yellow
     public static void guess(char[] c) {
+
         // Check if any of the guessed letters are in the correct spot
         for (int i = 0; i < 5; i++) {
             if (c[i] == letters[i]) {
@@ -53,20 +57,73 @@ public class Wordle {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 // Make sure the correct letter spot doesnt get marked again.
-                if (guessTracker[i] == true) {
-                    validLetter[i] = true;
+                if (guessTracker[i] != true) {
+                    if (c[i] == letters[j]) {
+                        validLetter[i] = true;
+                    }
                 }
                 
             }
         }
         
+        
     }
-    
+    // Check if player has won
+    public static void checkWin() {
+        // Check if player already guessed multiple times
+        if (WordleGame.userGuessAmount() > 24) {
+            int reply = JOptionPane.showConfirmDialog(null, 
+            "Too bad! The word was: " + Wordle.getWord() +"\nWould you like to play again?",
+             ":(!", JOptionPane.YES_NO_OPTION);
+        
+            if (reply == JOptionPane.YES_OPTION) {
+                Wordle.resetGame(); // Reset game.
+            } 
+            else {
+                System.exit(0); // Close game.
+            }
+            
+        }
+        
+        boolean win = true;
+        for (int i = 0; i < 5; i++) {
+            if (guessTracker[i] != true) {
+                win = false;
+            } 
+        }
+        // If they win, ask if they would like to play again.
+        if (win == true) {
+            int reply = JOptionPane.showConfirmDialog(null, 
+            "Congrats on guessing the word: " + word +"\nWould you like to play again?",
+             "Congratulations!", JOptionPane.YES_NO_OPTION);
+        
+            if (reply == JOptionPane.YES_OPTION) {
+                resetGame(); // Reset game.
+            } 
+            else {
+                System.exit(0); // Close game.
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            guessTracker[i] = false;
+            validLetter[i] = false;
+            
+        }
+    }
+
+    // Reset game
     public static void resetGame() {
         newWord();
         for (int i = 0; i < 5; i++) {
             guessTracker[i] = false;
             validLetter[i] = false;
+            
+        }
+        WordleGame.guessRestart();
+        new WordleGame();
+
+        if (WordleGame.debugStatus() == true) {
+            System.out.println(Wordle.getWord());
         }
     }
 
