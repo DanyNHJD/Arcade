@@ -1,5 +1,8 @@
 package Wordle;
-// To view the word change @line 10 boolean to true
+/* To view the word change @line 10 boolean to true
+* 
+* To start game, Wordle.resetGame();
+*/
 
 import javax.swing.*;
 
@@ -72,8 +75,6 @@ public class WordleGame implements ActionListener{
             Wordle.guess(charGuess);
 
             guessBoxes();
-
-            // TODO
         }
         tf.setText("");
     }
@@ -108,11 +109,6 @@ public class WordleGame implements ActionListener{
     }
 
     public static void guessRestart() {
-        guessPlacement = 0;
-    }
-
-    public static void main(String[] args) {
-        Wordle.resetGame();
         guessPlacement = 0;
     }
 }

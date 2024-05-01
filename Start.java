@@ -1,4 +1,7 @@
 import javax.swing.*;
+
+import Wordle.Wordle;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -50,11 +53,11 @@ public class Start extends JFrame implements ActionListener {
      //so the button starts doing things
 
         if(e.getSource() == button){
-            System.out.println("yes");
+            
         }
 
         if(e.getSource() == button1){
-            wordle frame = new Wordle.resetgame();
+            Wordle.resetGame();
         }
     }
 
