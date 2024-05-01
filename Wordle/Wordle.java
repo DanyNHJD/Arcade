@@ -1,3 +1,4 @@
+package Wordle;
 /*
  *  Class to get a 5 letter word from an API and sort it
  *  to a char format for users to guess.

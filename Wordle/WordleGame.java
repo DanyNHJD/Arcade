@@ -1,6 +1,8 @@
+package Wordle;
 // To view the word change @line 10 boolean to true
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
