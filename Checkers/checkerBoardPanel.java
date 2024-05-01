@@ -169,13 +169,13 @@ public class checkerBoardPanel extends JPanel{
                 return true;
             }
         } else if(loc >= 48 && loc <= 55){
-            if((p == 1 || p == 3 || p == 4)){
+            if(p == 1){
                 return false;
             } else if((p == 2 || p == 3 || p == 4) && newLoc >= 32 && newLoc <= 39){
                 return true;
             }
         } else if(loc >= 56 && loc <= 63){
-            if((p == 1 || p == 3 || p == 4)){
+            if(p == 1){
                 return false;
             } else if((p == 2 || p == 3 || p == 4) && newLoc >= 40 && newLoc <= 57){
                 return true;
