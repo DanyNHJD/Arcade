@@ -52,5 +52,9 @@ public class Title2 extends JFrame implements ActionListener {
         if(e.getSource() == button){
             System.out.println("yes");
         }
+
+        if(e.getSource() == button1){
+            wordle frame = new Wordle.resetgame();
+        }
     }
 }
