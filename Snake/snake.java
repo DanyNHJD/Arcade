@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class snake extends KeyAdapter{
     public int[] body = new int[100];
+    @SuppressWarnings("unused")
     private JFrame frame;
     private int direction;
     /*

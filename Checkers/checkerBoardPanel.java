@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
+@SuppressWarnings("unused")
 public class checkerBoardPanel extends JPanel{
     Color baseColor;
     int Piece = 0;

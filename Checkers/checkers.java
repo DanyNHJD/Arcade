@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.Random;
 
+@SuppressWarnings("unused")
 public class checkers extends JFrame{
     public checkerBoardPanel[] backdrop = new checkerBoardPanel[64];
     private boolean colorFlip = false;

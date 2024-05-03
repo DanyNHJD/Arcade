@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.Color;
 
+@SuppressWarnings("unused")
 public class MouseActivity extends MouseAdapter{
     private checkerBoardPanel tile;
 
