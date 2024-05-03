@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 
+@SuppressWarnings("unused")
 public class computer{
     private Ball ball;
 

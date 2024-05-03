@@ -1,46 +1,40 @@
 import javax.swing.*;
-
 import Wordle.Wordle;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class Start extends JFrame implements ActionListener {
 
-    JButton button1;
-    JButton button;
+    JButton wordleButton = new JButton();
+    JButton pongButton = new JButton();
 
 
 
     Start(){
+        //pong
+        ImageIcon pongIcon = new ImageIcon("Title/Pong26.png");
+        ImageIcon wordleIcon = new ImageIcon("Title/Wordle.png");
 
-       //pong
-        button = new JButton();
-        ImageIcon icon = new ImageIcon("Title/Pong26.png");
-        ImageIcon icon1 = new ImageIcon("Title/Wordle.png");
-
-        button.setBounds(300,350,200,100);
-        button.addActionListener(this);
-        button.setFocusable(false);
-        button.setIcon(icon);
-        button.setHorizontalTextPosition(JButton.CENTER);
+        pongButton.setBounds(300,350,200,100);
+        pongButton.addActionListener(this);
+        pongButton.setFocusable(false);
+        pongButton.setIcon(pongIcon);
+        pongButton.setHorizontalTextPosition(JButton.CENTER);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setSize(600,600);
         this.setVisible(true);
-        this.add(button);
+        this.add(pongButton);
 
 
         //Wordle
-        button1 = new JButton();
-        button1.setBounds(50,350,200,100);
-        button1.addActionListener(this);
-        button1.setFocusable(false);
-        button1.setIcon(icon);
-        button1.setHorizontalTextPosition(JButton.CENTER);
-        button1.setIcon(icon1);
-        this.add(button1);
+        wordleButton.setBounds(50,350,200,100);
+        wordleButton.addActionListener(this);
+        wordleButton.setFocusable(false);
+        wordleButton.setHorizontalTextPosition(JButton.CENTER);
+        wordleButton.setIcon(wordleIcon);
+        this.add(wordleButton);
 
 
 
@@ -49,14 +43,11 @@ public class Start extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-     //so the button starts doing things
-
-        if(e.getSource() == button){
+        if(e.getSource() == pongButton){
             
         }
 
-        if(e.getSource() == button1){
+        if(e.getSource() == wordleButton){
             Wordle.resetGame();
         }
     }

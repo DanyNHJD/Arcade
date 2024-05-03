@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.Random;
 
+@SuppressWarnings("unused")
 public class Ball{
     private Random rn = new Random();
     private int x;
