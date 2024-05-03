@@ -1,6 +1,6 @@
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -12,7 +12,7 @@ import java.util.List;
 public class TriviaAPI {
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public List<String> fetchData() throws IOException, InterruptedException {
+    public List<String> fetchData() throws IOException, InterruptedException, JSONException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://opentdb.com/api.php?amount=1&type=multiple"))
                 .GET()
@@ -28,7 +28,7 @@ public class TriviaAPI {
         }
     }
 
-    private List<String> parseTriviaQuestions(JSONObject question) {
+    private List<String> parseTriviaQuestions(JSONObject question) throws JSONException {
         List<String> triviaData = new ArrayList<>();
 
         triviaData.add(question.getString("question")
