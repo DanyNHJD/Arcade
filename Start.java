@@ -6,48 +6,44 @@ import java.awt.event.ActionListener;
 
 public class Start extends JFrame implements ActionListener {
 
-    JButton wordleButton = new JButton();
-    JButton pongButton = new JButton();
+    // Buttons and Icons
+    JButton wordle = new JButton();
+    ImageIcon wordleIcon = new ImageIcon("Title/Wordle.png");
 
-
+    JButton pong = new JButton();
+    ImageIcon pongIcon = new ImageIcon("Title/Pong.png");
 
     Start(){
-        //pong
-        ImageIcon pongIcon = new ImageIcon("Title/Pong26.png");
-        ImageIcon wordleIcon = new ImageIcon("Title/Wordle.png");
+        // Pong
+        pong.setBounds(300,350,200,100);
+        pong.addActionListener(this);
+        pong.setFocusable(false);
+        pong.setHorizontalTextPosition(JButton.CENTER);
+        pong.setIcon(pongIcon);
+        this.add(pong);
 
-        pongButton.setBounds(300,350,200,100);
-        pongButton.addActionListener(this);
-        pongButton.setFocusable(false);
-        pongButton.setIcon(pongIcon);
-        pongButton.setHorizontalTextPosition(JButton.CENTER);
+        //Wordle
+        wordle.setBounds(50,350,200,100);
+        wordle.addActionListener(this);
+        wordle.setFocusable(false);
+        wordle.setHorizontalTextPosition(JButton.CENTER);
+        wordle.setIcon(wordleIcon);
+        this.add(wordle);
+
+        // Panel setup
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setSize(600,600);
         this.setVisible(true);
-        this.add(pongButton);
-
-
-        //Wordle
-        wordleButton.setBounds(50,350,200,100);
-        wordleButton.addActionListener(this);
-        wordleButton.setFocusable(false);
-        wordleButton.setHorizontalTextPosition(JButton.CENTER);
-        wordleButton.setIcon(wordleIcon);
-        this.add(wordleButton);
-
-
-
-
  }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == pongButton){
-            
+        if(e.getSource() == pong){
+            new pingPong();
         }
 
-        if(e.getSource() == wordleButton){
+        if(e.getSource() == wordle){
             Wordle.resetGame();
         }
     }

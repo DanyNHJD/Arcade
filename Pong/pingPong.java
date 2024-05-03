@@ -144,8 +144,4 @@ public class pingPong extends JFrame {
             loss = ball.checkPaddleCollision(p, p2, null, mid.getWidth()); // Pass both player paddles
         }
     }
-
-    public static void main(String[] args) {
-        new pingPong();
-    }
 }
