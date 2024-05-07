@@ -135,8 +135,4 @@ public class snakeGame extends JFrame{
         }
         backdrop[s.body[0]].setBackground(Color.LIGHT_GRAY);
     }
-
-    public static void main(String[] args){
-        new snakeGame();
-    }
 }

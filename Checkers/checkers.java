@@ -71,8 +71,4 @@ public class checkers extends JFrame{
         backdrop[61].addPiece(2);
         backdrop[63].addPiece(2);
     }
-
-    public static void main(String[] args){
-        new checkers();
-    }
 }

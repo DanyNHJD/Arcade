@@ -15,7 +15,7 @@ public class JeopardyLayout extends JFrame implements ActionListener {
     private JLabel scoreLabel;
 
 
-    JeopardyLayout() {
+    public JeopardyLayout() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1200, 600);
         setTitle("Jeopardy Game");
