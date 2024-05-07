@@ -69,6 +69,7 @@ public class Start extends JFrame implements ActionListener {
         // Panel setup
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
+        this.setTitle("Arcade");
         this.setSize(600,600);
         this.setVisible(true);
  }
