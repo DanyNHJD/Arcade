@@ -11,19 +11,19 @@ public class Start extends JFrame implements ActionListener {
 
     // Buttons and Icons
     JButton checkers = new JButton();
-    ImageIcon checkersIcon = new ImageIcon("Title/Checkers.png");
+    ImageIcon checkersIcon = new ImageIcon(getClass().getResource("Title/Checkers.png"));
 
     JButton jeopardy = new JButton();
-    ImageIcon jeopardyIcon = new ImageIcon("Title/Jeopardy.png");
+    ImageIcon jeopardyIcon = new ImageIcon(getClass().getResource("Title/Jeopardy.png"));
 
     JButton pong = new JButton();
-    ImageIcon pongIcon = new ImageIcon("Title/Pong.png");
+    ImageIcon pongIcon = new ImageIcon(getClass().getResource("Title/Pong.png"));
 
     JButton snake = new JButton();
-    ImageIcon snakeIcon = new ImageIcon("Title/Snake.png");
+    ImageIcon snakeIcon = new ImageIcon(getClass().getResource("Title/Snake.png"));
 
     JButton wordle = new JButton();
-    ImageIcon wordleIcon = new ImageIcon("Title/Wordle.png");
+    ImageIcon wordleIcon = new ImageIcon(getClass().getResource("Title/Wordle.png"));
 
     Start(){
         // Checkers
