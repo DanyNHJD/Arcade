@@ -204,19 +204,19 @@ public class checkerBoardPanel extends JPanel{
             img.setIcon(imageIcon);
         }
         if(pieceCode == 1){
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon("blackPiece.png").getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT));
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon("Checkers/blackPiece.png").getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT));
             img.setIcon(imageIcon);
         }
         if(pieceCode == 2){
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon("redPiece.png").getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT));
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon("Checkers/redPiece.png").getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT));
             img.setIcon(imageIcon);
         }
         if(pieceCode == 3){
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon("blackKing.png").getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT));
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon("Checkers/blackKing.png").getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT));
             img.setIcon(imageIcon);
         }
         if(pieceCode == 4){
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon("redKing.png").getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT));
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon("Checkers/redKing.png").getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT));
             img.setIcon(imageIcon);
         }
     }
